@@ -1,0 +1,43 @@
+Suggest Word Application
+========================================================
+author: Jagannatha Reddy
+date: March 25, 2017
+
+Objectives
+========================================================
+- Capstone Project for the Coursera Data Science specialization from Johns Hopkins University in collaboration with SwiftKey
+- **Main objective**: build a shiny application to predict the next word given set of words
+- Activities include
+  - fetching the data
+  - data cleansing
+  - exploratory analysis of the data
+  - building n-grams data
+  - predicting the word
+  - building shiny App to demonstrate the working
+
+Building Word Predictor
+========================================================
+- The data is from a corpus called <a href="http://www.corpora.heliohost.org">HC Corpora</a> [*link not working*]
+- Sample data from **blogs**, **news**, and **twitter** used for building word predictor app
+- Text is normalized (lowercasing, removing punctuations, and eliminating extra whitespaces)
+- Term document frequency generated for N-Grams (contiguous sequence of N words) data
+- Given any word sequence we try to match its presence in the N-Grams data
+- Initially last 4 words of given string's presence is tried in the beginning of 5-Gram data. If present string is used displayed
+- If not present then presence of last 3 words in 4-Gram data is tried, and so on until result is obtained
+
+Application Usage
+========================================================
+- Invoke the application at <a href="https://jaganrn.shinyapps.io/DataScience-CapstoneProject/">jaganrn.shinyapps.io/DataScience-CapstoneProject</a>
+- Please wait for the application to load N-Gram data. It might take couple of minutes
+- Enter one or more words into the **Input Text** Box at the left panel
+- Word suggestion (including the words you entered) shown in the right panel
+- You can Click on **Clear Input** button to clear the words you have already entered
+- **NO_SUGGESION** in the right panel indicates there are no suggestions. Try other words
+          
+Conclusion
+========================================================
+- Source code is available at <a href="https://github.com/jaganrn/DataScience-CapstoneProject">github.com/jaganrn/DataScience-CapstoneProject</a>
+- Word Suggest Shiny Application is hosted at <a href="https://jaganrn.shinyapps.io/DataScience-CapstoneProject/">jaganrn.shinyapps.io/DataScience-CapstoneProject</a>
+- Presentation is hosted at <a href="http://rpubs.com/jaganrn/capstone">rpubs.com/jaganrn/capstone</a>
+- For this demo application N-grams data obtained from <a href="http://www.ngrams.info/download_coca.asp">www.ngrams.info</a> is used
+- www.ngrams.info data showed better results than sample used from HC Corpora
