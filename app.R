@@ -38,8 +38,9 @@ SuggestNextWord <- function(givenString) {
     suggestedTerm  <- ""
     foundResult <- FALSE
   
-    #try to match using 5-gram
+    #try to match using 5-gram when given string has more than 3 words
     if(givenStringLen >= 4 & !foundResult) {
+        #try to match the last 4 words in a given string
         currentMatchString <- paste(givenStringList[(givenStringLen-3):givenStringLen], collapse=" ")
         #check for presence in 5-gram data
         TFT5Temp <- TFT5[grep(paste("^", currentMatchString, sep = ""), TFT5$terms), ]
@@ -52,8 +53,9 @@ SuggestNextWord <- function(givenString) {
         TFT5Temp <- NULL
     }
   
-    #try to match using 4-gram if result is not found yet
+    #try to match using 4-gram if result is not found yet and given string has more than 2 words
     if(givenStringLen >= 3 & !foundResult) {
+        #try to match the last 3 words in a given string
         currentMatchString <- paste(givenStringList[(givenStringLen-2):givenStringLen], collapse=" ")
         #check for presence in 4-gram data
         TFT4Temp <- TFT4[grep(paste("^",currentMatchString, sep = ""), TFT4$terms), ]
@@ -66,8 +68,9 @@ SuggestNextWord <- function(givenString) {
         TFT4Temp <- NULL
     }
   
-    #try to match using 3-gram if result is not found yet
+    #try to match using 3-gram if result is not found yet and given string has more than 1 word
     if(givenStringLen >= 2 & !foundResult) {
+        #try to match the last 2 words in a given string
         currentMatchString <- paste(givenStringList[(givenStringLen-1):givenStringLen], collapse=" ")
     
         #check for presence in 3-gram data
@@ -81,8 +84,9 @@ SuggestNextWord <- function(givenString) {
         TFT3Temp <- NULL
     }
   
-    #try to match using 2-gram if result is not found yet
+    #finally try to match using 2-gram if result is not found yet and using the last word
     if(givenStringLen >= 1 & !foundResult) {
+        #try to match the last word in a given string
         currentMatchString <- givenStringList[givenStringLen]
     
         #check for presence in 4-gram data
@@ -106,6 +110,7 @@ SuggestNextWord <- function(givenString) {
         }
     }
 }
+
 #UI
 ui <- fluidPage(
     #define 2 tabs showcase the application
@@ -152,3 +157,4 @@ server <- function(input, output, session) {
 }
     
 shinyApp(ui=ui, server=server)
+
